@@ -5,14 +5,15 @@
   <arg name="manager"                  value="/$(arg manager_name)"/>
   <arg name="manager_threads"          default="4"/>
   
-  <arg name="sensor_name"              default="aravis_cam"/>
+  <arg name="sensor_name"              default="camera"/>
   <arg name="serial_no"                default=""/>
   <arg name="camera_info_url"          default=""/>
   
-  <arg name="pixel_format"             default="BGR8"/>
-  <arg name="width"                    default="720"/>
-  <arg name="height"                   default="540"/>
+  <arg name="pixel_format"             default="Mono12Packed"/>
+  <arg name="width"                    default="4112"/>
+  <arg name="height"                   default="3008"/>
   <arg name="fps"                      default="25"/>
+  <arg name="exposure_time"            default="50000.0"/>
   
 
   <!-- Nodelet Manager -->
@@ -37,11 +38,12 @@
     <param name="AcquisitionFrameRate" type="double" value="$(arg fps)"/>
     
     <param name="Gamma"                value="0.41"/>
-    <param name="Gain"                 value="0.0"/>
+    <param name="Gain"                 value="1.0"/>
     <param name="AutoFunctionsROIPreset" value="AutoFunctionsROIPreset_Full"/>
-    <param name="ExposureAuto"         value="Continuous"/>
-    <param name="GainAuto"             value="Continuous"/>
-    <param name="BalanceWhiteAuto"     value="Continuous"/>
+    <param name="ExposureAuto"         value="Off"/>
+    <param name="ExposureTime"         value="$(arg exposure_time)"/>
+    <param name="GainAuto"             value="Off"/>
+    <param name="BalanceWhiteAuto"     value="Off"/>
 
   </node>
   
